@@ -11350,16 +11350,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var $tabBar = (0, _jquery.default)("#app2 .tab-bar");
 var $tabContent = (0, _jquery.default)('#app2 .tab-content');
+var index = localStorage.getItem('app2.index');
 $tabBar.on("click", "li", function (e) {
   var $li = (0, _jquery.default)(e.currentTarget);
   $li.addClass('selected').siblings().removeClass('selected');
   var index = $li.index();
+  localStorage.setItem('app2.index', index);
   console.log(index);
   $tabContent.children().eq(index).addClass('active').siblings().removeClass('active');
 }); // 上面的addClass和removeClass做到：样式和行为分离
 //千万不要用js操作css，而且hide和show也不要使用
 
-$tabBar.children().eq(0).trigger('click');
+$tabBar.children().eq(index).trigger('click');
 },{"./app2.css":"app2.css","jquery":"../node_modules/jquery/dist/jquery.js"}],"app3.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -11441,7 +11443,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59838" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60073" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
